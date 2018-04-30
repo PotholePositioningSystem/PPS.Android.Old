@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = adapter
     }
 
-    fun signIn(){
+    private fun signIn(){
         startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
