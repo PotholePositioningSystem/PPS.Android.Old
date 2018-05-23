@@ -9,8 +9,8 @@
     <string name="title_activity_add_issue">AddIssueActivity</string>
     <string name="action_settings">Settings</string>
 
-    <string name="facebook_app_id" translatable="false">189229117859193</string>
-    <string name="fb_login_protocol_scheme" translatable="false">fb189229117859193</string>
+    <string name="facebook_application_id" translatable="false">189229117859193</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb189229117859193</string>
 
     <string name="twitter_consumer_key" translatable="false">yi7fibh5sPSuTIbF99sPw</string>
     <string name="twitter_consumer_secret" translatable="false">yfhiglGeVZKilUzDVzHdgjmRromNO39i6be2KFyKbA</string>

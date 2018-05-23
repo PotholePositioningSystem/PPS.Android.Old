@@ -12,14 +12,23 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_potholes.*
-
 import pps.android.R
+import pps.android.ui.activities.MainActivity
+import pps.android.util.Utils.app
+import javax.inject.Inject
 
 
 class PotholesFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
+    @Inject lateinit var firebaseAuth: FirebaseAuth
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        app.component.inject(this)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -34,7 +43,13 @@ class PotholesFragment : Fragment(), OnMapReadyCallback {
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        newIssue.setOnClickListener {  }
+        newIssue.setOnClickListener {
+            if (firebaseAuth.currentUser == null) {
+                var activity = activity as MainActivity
+                activity.signIn()
+            }
+
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

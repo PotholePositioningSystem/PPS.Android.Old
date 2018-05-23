@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private val RC_SIGN_IN = 123
 
     @Inject
-    lateinit var firebaseAuth:FirebaseAuth
+    lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
-
     }
 
     private fun setupViewPager() {
@@ -81,17 +80,15 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = adapter
     }
 
-    private fun signIn(){
+    fun signIn() {
         startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setIsSmartLockEnabled(!BuildConfig.DEBUG, true)
                         .setAvailableProviders(Arrays.asList(
                                 AuthUI.IdpConfig.EmailBuilder().build(),
-                                AuthUI.IdpConfig.PhoneBuilder().build(),
-                                AuthUI.IdpConfig.GoogleBuilder().build(),
-                                AuthUI.IdpConfig.FacebookBuilder().build(),
-                                AuthUI.IdpConfig.TwitterBuilder().build()))
+                                AuthUI.IdpConfig.FacebookBuilder().build()
+                        ))
                         .build(),
                 RC_SIGN_IN)
     }

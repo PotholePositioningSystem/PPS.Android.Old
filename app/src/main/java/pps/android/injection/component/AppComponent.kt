@@ -6,6 +6,7 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import pps.android.injection.module.AppModule
 import pps.android.PPSApp
+import pps.android.ui.fragments.PotholesFragment
 import javax.inject.Singleton
 
 /**
@@ -25,5 +26,6 @@ interface AppComponent {
     }
 
     fun inject(app: PPSApp)
+    fun inject(potholeFragment: PotholesFragment)
 
 }
