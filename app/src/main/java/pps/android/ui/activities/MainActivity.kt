@@ -92,4 +92,10 @@ class MainActivity : AppCompatActivity() {
                         .build(),
                 RC_SIGN_IN)
     }
+
+    fun signOut(){
+        AuthUI.getInstance().signOut(this).addOnCompleteListener {
+            //user is now signed out.
+        }
+    }
 }
