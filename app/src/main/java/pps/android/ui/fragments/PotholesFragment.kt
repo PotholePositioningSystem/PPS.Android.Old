@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -23,7 +24,8 @@ import javax.inject.Inject
 class PotholesFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
-    @Inject lateinit var firebaseAuth: FirebaseAuth
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,7 @@ class PotholesFragment : Fragment(), OnMapReadyCallback {
 
         newIssue.setOnClickListener {
             if (firebaseAuth.currentUser == null) {
+                Toast.makeText(activity, "You need to be signed in to log issues!", Toast.LENGTH_LONG).show();
                 var activity = activity as MainActivity
                 activity.signIn()
             }

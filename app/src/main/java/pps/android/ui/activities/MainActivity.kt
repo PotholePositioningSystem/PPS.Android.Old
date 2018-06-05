@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
+                        .setTheme(R.style.PPSUI)
                         .setIsSmartLockEnabled(!BuildConfig.DEBUG, true)
                         .setAvailableProviders(Arrays.asList(
                                 AuthUI.IdpConfig.EmailBuilder().build(),
