@@ -107,5 +107,7 @@ dependencies {
 
     // Android Kotlin Extension
     implementation "androidx.core:core-ktx:$rootProject.androidKTXVersion"
+    implementation 'com.github.anastr:speedviewlib:1.2.0'
+
 }
 apply plugin: 'com.google.gms.google-services'
