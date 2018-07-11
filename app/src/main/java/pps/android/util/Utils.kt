@@ -54,7 +54,6 @@ object Utils {
                                     })
                                     .setIcon(android.R.drawable.ic_dialog_alert)
                                     .show()
-
                         } else {
                             granted()
                         }
@@ -71,8 +70,6 @@ object Utils {
                                 .setPositiveButton(android.R.string.yes, { dialogInterface, i -> token.continuePermissionRequest() })
                                 .setIcon(icon)
                                 .show()
-
-
                     }
                 }).check()
     }

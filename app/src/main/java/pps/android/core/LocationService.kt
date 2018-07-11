@@ -1,25 +1,25 @@
 package pps.android.core
 
+import android.app.PendingIntent
 import android.app.Service
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.location.GpsStatus
 import android.location.Location
 import android.location.LocationListener
+import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
-import android.app.PendingIntent
-import android.content.Context
-import android.location.LocationManager
-import pps.android.ui.activities.MainActivity
-import android.content.Context.LOCATION_SERVICE
-import android.content.pm.PackageManager
-import android.os.Build
 import android.support.v4.content.ContextCompat
+import pps.android.ui.activities.MainActivity
 
 
-@Suppress("DEPRECATION")
 class LocationService : Service(), LocationListener, GpsStatus.Listener {
     private lateinit var mLocationManager: LocationManager
+    private var lastLocation: Location = Location("last")
+    private var firstTime: Boolean = true
 
     override fun onCreate() {
         super.onCreate()
@@ -45,7 +45,14 @@ class LocationService : Service(), LocationListener, GpsStatus.Listener {
     }
 
     override fun onLocationChanged(location: Location?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+        if (firstTime) {
+            lastLocation.set(location)
+            firstTime = false
+        }
+
+        val distance = lastLocation.distanceTo(location)
+
     }
 
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
